@@ -8,3 +8,16 @@ This can ensure that elements have unique and unchanging IDs that can be used in
 
 ### Automatic Event Tracking
 You might want to track all UX interactions which happen on a page. Instead of manually adding all tracking, setup global click handlers and use these IDs to report what was clicked.
+
+## Setup
+
+```bash
+npm install
+```
+
+## Run Example
+You can see how this transforms [example.jsx](./example.jsx) with the following command:
+
+```bash
+npx prettier --plugin . example.jsx
+```
