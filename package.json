@@ -1,0 +1,29 @@
+{
+  "name": "prettier-plugin-jsx-add-ids",
+  "version": "0.0.1",
+  "description": "Auto-generate ID attributes for JSX elements.",
+  "main": "src/index.js",
+  "scripts": {
+    "example": "prettier --plugin . example.jsx",
+    "test": "jest"
+  },
+  "keywords": [
+    "prettier",
+    "jsx",
+    "plugin"
+  ],
+  "author": {
+    "name": "Jeremy Gillick"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@babel/traverse": "^7.9.6",
+    "@babel/types": "^7.9.6",
+    "prettier": "^1.15.3",
+    "uuid": "^8.0.0"
+  },
+  "devDependencies": {
+    "jest": "^24.0.0",
+    "jest-watch-typeahead": "^0.2.1"
+  }
+}
