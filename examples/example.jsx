@@ -1,5 +1,4 @@
-/* eslint no-console: off */
-/* eslint react/react-in-jsx-scope: off */
+/* eslint no-console: off, react/react-in-jsx-scope: off, react/prop-types: off */
 
 export default function FooComponent() {
   function clickHandler() {
@@ -18,6 +17,11 @@ export default function FooComponent() {
       <p>
         <a href="#">Going somewhere</a>
       </p>
+      <OtherComponent onClick={() => console.log('hello')} />
     </div>
   );
 }
+
+function OtherComponent({ testID, onClick }) {
+  return <div data-testid={testID} onClick={onClick}>Hello world</div>;
+};

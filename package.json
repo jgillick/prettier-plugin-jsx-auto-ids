@@ -10,7 +10,7 @@
     "prepare": "npm run clean && npm run build",
     "clean": "rm -rf dist",
     "build": "npx babel src -d dist",
-    "examples": "npm run build && prettier --id-elements=button --id-when-attributes=onClick,href --plugin ./dist examples/*.jsx examples/**/*.jsx"
+    "examples": "npm run build && prettier --id-elements=button --id-when-attributes=onClick,href --component-id-attr-name=testID --plugin ./dist examples/*.jsx examples/**/*.jsx"
   },
   "keywords": [
     "prettier",

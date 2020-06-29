@@ -35,8 +35,20 @@ Use this to define the ID attribute name. By default it's set to `data-testid`, 
 For example, set the ID attribute to `my-id`:
 
 ```
-npx prettier --data-testid=my-id  --plugin prettier-plugin-jsx-auto-ids examples/*.jsx
+npx prettier --id-attr-name=my-id  --plugin prettier-plugin-jsx-auto-ids examples/*.jsx
 ```
+
+
+### `--component-id-attr-name`
+
+This is the same as `--id-attr-name` except it's the attribute name to used when being placed on JSX components. This is necessary because often times component attributes are camelCase instead of dash-case.
+
+For example:
+
+```
+npx prettier --component-id-attr-name=testID --id-attr-name=my-id  --plugin prettier-plugin-jsx-auto-ids examples/*.jsx
+```
+
 
 ### `--id-elements`
 

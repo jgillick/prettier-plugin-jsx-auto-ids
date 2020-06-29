@@ -9,6 +9,7 @@ import IDGenerator from './IDGenerator';
 export default class ElementHandler {
   constructor(options) {
     this.idName = 'data-testid';
+    this.componentIdName = this.idName;
     this.attrList = [];
     this.elemList = [];
     this.idGen = new IDGenerator(options.filepath);
@@ -21,6 +22,7 @@ export default class ElementHandler {
    */
   processOptions(options) {
     this.idName = options.idAttrName || this.idName;
+    this.componentIdName = options.componentIdAttrName || this.idName;
 
     const idElements = options.idElements || '';
     const idWhenAttributes = options.idWhenAttributes || '';
@@ -41,36 +43,44 @@ export default class ElementHandler {
     const attributes = ASTUtils.getAttributeNames(path);
     const attrMatch = this.attrList.find((a) => attributes.includes(a));
 
+    // Is this a native HTML element or a JSX element
+    let { idName } = this;
+    if (elemName.match(/^[A-Z]/)) {
+      idName = this.componentIdName;
+    }
+
     // Restrict if it doesn't match element name or attribute conditions
     if (
       (this.elemList.length && !this.elemList.includes(elemName))
       && (this.attrList.length && !attrMatch)
-      && !attributes.includes(this.idName)
+      && !attributes.includes(idName)
     ) {
       return;
     }
 
-    if (attributes.includes(this.idName)) {
-      this.updateId(path);
+    if (attributes.includes(idName)) {
+      this.updateId(idName, path);
     } else {
-      this.addId(path);
+      this.addId(idName, path);
     }
   }
 
   /**
    * Add a unique ID attribute to this element
+   * @param {String} attrName  - The name of the attribute to assign the ID to.
    * @param {JSXOpeningElement} path - AST path for a JSX opening element.
    */
-  addId(path) {
-    ASTUtils.prependAttribute(path, this.idName, this.idGen.createId());
+  addId(attrName, path) {
+    ASTUtils.prependAttribute(path, attrName, this.idGen.createId());
   }
 
   /**
    * Update the ID on this element, if it is not unique to the file.
+   * @param {String} attrName  - The name of the attribute to assign the ID to.
    * @param {JSXOpeningElement} path - AST path for a JSX opening element.
    */
-  updateId(path) {
-    const attr = ASTUtils.getAttribute(path, this.idName);
+  updateId(attrName, path) {
+    const attr = ASTUtils.getAttribute(path, attrName);
     if (!attr || !t.isStringLiteral(attr.value)) {
       return;
     }

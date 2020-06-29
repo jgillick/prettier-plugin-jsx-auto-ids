@@ -48,6 +48,12 @@ exports.options = {
     default: 'data-testid',
     description: 'The ID attribute name to use.',
   },
+  componentIdAttrName: {
+    type: 'string',
+    category: 'JSX',
+    default: '',
+    description: 'The ID attribute name to use on JSX components (not native HTML elements).',
+  },
   idElements: {
     type: 'string',
     category: 'JSX',
