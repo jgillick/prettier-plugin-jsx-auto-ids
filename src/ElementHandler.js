@@ -1,14 +1,14 @@
-const t = require('@babel/types');
-const IDGenerator = require('./IDGenerator');
-const ASTUtils = require('./ASTUtils');
+import * as t from '@babel/types';
+import ASTUtils from './ASTUtils';
+import IDGenerator from './IDGenerator';
 
 /**
  * Handles adding ID attributes to JSX elements for a file.
  * @param {Object} options - Prettier parser options.
  */
-class ElementHandler {
+export default class ElementHandler {
   constructor(options) {
-    this.idName = 'id';
+    this.idName = 'data-testid';
     this.attrList = [];
     this.elemList = [];
     this.idGen = new IDGenerator(options.filepath);
@@ -22,10 +22,10 @@ class ElementHandler {
   processOptions(options) {
     this.idName = options.idAttrName || this.idName;
 
-    const addIdToElems = options.addIdToElems || '';
-    const addIdIfAttr = options.addIdIfAttr || '';
-    this.elemList = addIdToElems.split(',').map((i) => i.trim());
-    this.attrList = addIdIfAttr.split(',').map((i) => i.trim());
+    const idElements = options.idElements || '';
+    const idWhenAttributes = options.idWhenAttributes || '';
+    this.elemList = idElements.split(',').map((i) => i.trim());
+    this.attrList = idWhenAttributes.split(',').map((i) => i.trim());
   }
 
   /**
@@ -87,5 +87,3 @@ class ElementHandler {
     }
   }
 }
-
-module.exports = ElementHandler;

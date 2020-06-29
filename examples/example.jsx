@@ -1,5 +1,7 @@
+/* eslint no-console: off */
+/* eslint react/react-in-jsx-scope: off */
 
-function FooComponent() {
+export default function FooComponent() {
   function clickHandler() {
     console.log('Clicked!');
   }
@@ -13,6 +15,9 @@ function FooComponent() {
         <span data-testid="duplicate-id">One</span>
         <span data-testid="duplicate-id">Two</span>
       </p>
+      <p>
+        <a href="#">Going somewhere</a>
+      </p>
     </div>
-  )
+  );
 }

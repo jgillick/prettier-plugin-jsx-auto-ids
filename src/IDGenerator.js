@@ -1,5 +1,5 @@
-const { v4: uuidv4 } = require('uuid');
-const path = require('path');
+import { v4 as uuidv4 } from 'uuid';
+import * as path from 'path';
 
 /**
  * Return a 5-character UUID
@@ -22,12 +22,12 @@ class IDGenerator {
 
       // If this is an index file, use parent path name
       if (prefix.toLowerCase() === 'index') {
-        prefix = path.basename(path.dirname(filepath))
+        prefix = path.basename(path.dirname(filepath));
       }
 
       this.prefix = prefix;
     } else {
-      this.prefix = shortUuid()
+      this.prefix = shortUuid();
     }
   }
 
@@ -38,7 +38,7 @@ class IDGenerator {
   createId() {
     let id;
     do {
-      id = `${this.prefix}-${shortUuid()}`
+      id = `${this.prefix}-${shortUuid()}`;
     } while (this.ids.has(id));
     this.ids.add(id);
     return id;
@@ -56,8 +56,8 @@ class IDGenerator {
     let uniqueId = id;
 
     while (this.ids.has(uniqueId)) {
-      i++;
-      uniqueId = `${id}-${i}`
+      i += 1;
+      uniqueId = `${id}-${i}`;
     }
 
     this.ids.add(uniqueId);

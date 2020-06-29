@@ -1,6 +1,6 @@
-const t = require('@babel/types');
+import * as t from '@babel/types';
 
-module.exports = {
+export default {
 
   /**
    * Return the name of an AST element
@@ -29,9 +29,9 @@ module.exports = {
     if (!node || !node.attributes) {
       return undefined;
     }
-    return node.attributes.find((attr) => {
-      return t.isJSXAttribute(attr) && attr.name.name === attrName;
-    });
+    return node.attributes.find((attr) => (
+      t.isJSXAttribute(attr) && attr.name.name === attrName
+    ));
   },
 
   /**
@@ -47,9 +47,7 @@ module.exports = {
 
     return node.attributes
       .filter((attr) => t.isJSXAttribute(attr))
-      .map((attr) => {
-        return attr.name.name;
-      });
+      .map((attr) => attr.name.name);
   },
 
   /**

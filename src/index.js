@@ -1,6 +1,6 @@
-const babylonParser = require('prettier/parser-babylon');
-const { default: traverse } = require('@babel/traverse');
-const ElementHandler = require('./ElementHandler');
+import babylonParser from 'prettier/parser-babylon';
+import traverse from '@babel/traverse';
+import ElementHandler from './ElementHandler';
 
 const { babylon } = babylonParser.parsers;
 
@@ -48,16 +48,16 @@ exports.options = {
     default: 'data-testid',
     description: 'The ID attribute name to use.',
   },
-  addIdToElems: {
+  idElements: {
     type: 'string',
     category: 'JSX',
     defualt: '',
     description: 'A comma-delimtited list of elements which should always have an ID.',
   },
-  addIdIfAttr: {
+  idWhenAttributes: {
     type: 'string',
     category: 'JSX',
     default: '',
-    description: 'A comma-delimted list of attributes which, if present, indicate the element should get an ID.',
+    description: 'A comma-delimited list of attributes which, if present, indicate the element should get an ID.',
   },
 };
