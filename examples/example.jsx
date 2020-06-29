@@ -24,4 +24,4 @@ export default function FooComponent() {
 
 function OtherComponent({ testID, onClick }) {
   return <div data-testid={testID} onClick={onClick}>Hello world</div>;
-};
+}
