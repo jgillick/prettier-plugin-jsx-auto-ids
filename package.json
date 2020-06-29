@@ -1,9 +1,11 @@
 {
   "name": "prettier-plugin-jsx-auto-ids",
   "version": "0.0.1-beta.0",
-  "description": "Auto-generate ID attributes for JSX elements.",
-  "main": "src/index.js",
+  "description": "Auto-generate ID attributes on JSX elements.",
+  "main": "dist/index.js",
+  "files": ["src/*"],
   "scripts": {
+    "prepare" : "npm run clean && npm run build",
     "clean": "rm -r dist",
     "build": "npx babel src -d dist",
     "examples": "npm run build && prettier --id-elements=button --id-when-attributes=onClick,href --plugin ./dist examples/*.jsx examples/**/*.jsx"
