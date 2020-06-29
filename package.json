@@ -3,10 +3,12 @@
   "version": "0.0.1-beta.0",
   "description": "Auto-generate ID attributes on JSX elements.",
   "main": "dist/index.js",
-  "files": ["src/*"],
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
-    "prepare" : "npm run clean && npm run build",
-    "clean": "rm -r dist",
+    "prepare": "npm run clean && npm run build",
+    "clean": "rm -rf dist",
     "build": "npx babel src -d dist",
     "examples": "npm run build && prettier --id-elements=button --id-when-attributes=onClick,href --plugin ./dist examples/*.jsx examples/**/*.jsx"
   },
