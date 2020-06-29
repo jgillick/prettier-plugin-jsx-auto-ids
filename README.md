@@ -19,5 +19,5 @@ npm install
 You can see how this transforms [example.jsx](./example.jsx) with the following command:
 
 ```bash
-npx prettier --plugin . example.jsx
+npm run example
 ```

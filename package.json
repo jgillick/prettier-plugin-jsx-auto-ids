@@ -4,8 +4,8 @@
   "description": "Auto-generate ID attributes for JSX elements.",
   "main": "src/index.js",
   "scripts": {
-    "example": "prettier --plugin . example.jsx",
-    "test": "jest"
+    "build": "",
+    "example": "prettier --plugin . --id-attr-name=data-testid --add-id-to-elems=button --add-id-if-attr=onClick examples/example.jsx"
   },
   "keywords": [
     "prettier",
@@ -23,7 +23,12 @@
     "uuid": "^8.0.0"
   },
   "devDependencies": {
-    "jest": "^24.0.0",
-    "jest-watch-typeahead": "^0.2.1"
+    "@babel/cli": "^7.10.3",
+    "@babel/core": "^7.10.3",
+    "@babel/node": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
   }
 }
