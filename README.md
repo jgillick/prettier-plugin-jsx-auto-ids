@@ -28,7 +28,7 @@ npm run examples
 
 ### `--id-attr-name`
 
-_Default: `data-testid`
+_Default: `data-testid`_
 
 Use this to define the ID attribute name. By default it's set to `data-testid`, but you could change the attribute to anything you want.
 
@@ -48,7 +48,7 @@ For example, if you want all `<button>` and `<a>` elements to get IDs:
 npx prettier --id-elements=button,a --plugin prettier-plugin-jsx-auto-ids examples/*.jsx
 ```
 
-### --id-when-attributes
+### `--id-when-attributes`
 
 A comma-delimited list of attributes which, if present, indicate the element should get an ID.
 
